@@ -1,22 +1,22 @@
 [
 	{
 		"name": "Inicio",
-		"url": "/"
+		"url": "/portfolio-dev/"
 	},
 	{
 		"name": "Proyectos",
-		"url": "/projects"
+		"url": "/portfolio-dev/projects"
 	},
 	{
 		"name": "Experiencia",
-		"url": "/experiencia"
+		"url": "/portfolio-dev/experiencia"
 	},
 	{
 		"name": "Sobre Mi",
-		"url": "/about"
+		"url": "/portfolio-dev/about"
 	},
 	{
 		"name": "Contacto",
-		"url": "/contacto"
+		"url": "/portfolio-dev/contacto"
 	}
 ]

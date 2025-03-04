@@ -1,0 +1,16 @@
+[
+	{
+		"dates": "Enero 2025 · Present",
+		"role": "Desarrollador Java",
+		"company": "Codetich",
+		"description": "Responsible for customer service and CRM system front-end development.",
+		"logo": "/assets/images/experiences/fta.ico"
+	},
+	{
+		"dates": "Noviembre 2022 · Junio 2023",
+		"role": "Programador Java",
+		"company": "Thradex Telecom",
+		"description": "Responsible for mobile front-end development of e-commerce platform.",
+		"logo": "/portfolio-dev/assets/images/experiences/logo-thradex.ico"
+	}
+]

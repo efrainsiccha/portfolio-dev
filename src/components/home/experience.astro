@@ -1,0 +1,37 @@
+---
+import experiences from "../../collections/experience.json";
+import AboutExperience from "../../components/about-experience.astro";
+---
+
+<section class="max-w-4xl mx-auto px-7 lg:px-0">
+  <h2
+    class="text-2xl font-bold leading-10 tracking-tight text-neutral-900 dark:text-neutral-100"
+  >
+    Mi Experiencia
+  </h2>
+  <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
+    A lo largo de mi carrera, he trabajado en diversas empresas, contribuyendo
+    en proyectos de desarrollo y tecnología. Aquí están algunas de mis
+    experiencias laborales.
+  </p>
+
+  <div class="w-full max-w-4xl mx-auto my-7 xl:px-0">
+    <div class="px-5 py-5">
+      {
+        experiences.map((experience) => {
+          return (
+            <div class="pb-10 border-l border-gray-200 last:border-l-0 dark:border-neutral-700">
+              <AboutExperience
+                dates={experience.dates}
+                role={experience.role}
+                company={experience.company}
+                description={experience.description}
+                logo={experience.logo}
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
