@@ -1,0 +1,32 @@
+---
+import IconButton from "../icon-button.astro";
+---
+
+<section class="max-w-4xl mx-auto px-7 lg:px-0 mb-28 sm:mb-36">
+  <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
+    Contáctame
+  </h2>
+
+  <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+    <input 
+      type="text" 
+      value="efrainsicchasql@gmail.com"
+      readonly
+      class="flex-1 px-4 py-2 rounded-lg border border-gray-300 bg-neutral-100 dark:bg-neutral-800 dark:border-neutral-600 text-neutral-900 dark:text-neutral-100 select-none cursor-default"
+      onfocus="this.blur()"
+    />
+
+    <div class="flex gap-2 items-center">
+      <IconButton link="mailto:efrainsicchasql@gmail.com">
+        <span class="iconify text-xl" data-icon="streamline:mail-send-email-send-email-paper-airplane"></span>
+      </IconButton>
+
+      <IconButton>
+        <span
+          class="iconify text-xl"
+          data-icon="streamline:align-front-1"
+        ></span>
+      </IconButton>
+    </div>
+  </div>
+</section>
