@@ -173,3 +173,34 @@ window.closeMobileMenu = () => {
   document.getElementById("menu").classList.add("hidden");
   document.getElementById("mobileMenuBackground").classList.add("hidden");
 };
+
+window.copyEmail = (email, buttonElement) => {
+  navigator.clipboard.writeText(email).then(() => {
+    showTooltip(buttonElement, "Correo copiado!");
+  });
+};
+
+function showTooltip(buttonElement, message) {
+  const tooltip = document.createElement("div");
+  tooltip.textContent = message;
+
+  tooltip.className = `absolute z-50 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900
+  text-xs py-1 px-3 rounded-lg shadow-lg whitespace-nowrap opacity-0 transition-opacity duration-200`;
+
+  const rect = buttonElement.getBoundingClientRect();
+
+  tooltip.style.left = `${rect.left + window.scrollX + rect.width / 2}px`;
+  tooltip.style.top = `${rect.top + window.scrollY - rect.height - 20}px`;
+  tooltip.style.transform = "translateX(-50%)";
+
+  document.body.appendChild(tooltip);
+
+  requestAnimationFrame(() => {
+    tooltip.classList.replace("opacity-0", "opacity-100");
+  });
+
+  setTimeout(() => {
+    tooltip.classList.replace("opacity-100", "opacity-0");
+    setTimeout(() => tooltip.remove(), 200);
+  }, 1500);
+}

@@ -20,13 +20,20 @@ import IconButton from "../icon-button.astro";
       <IconButton link="mailto:efrainsicchasql@gmail.com">
         <span class="iconify text-xl" data-icon="streamline:mail-send-email-send-email-paper-airplane"></span>
       </IconButton>
-
+    
       <IconButton>
         <span
-          class="iconify text-xl"
+          class="iconify text-xl cursor-pointer"
           data-icon="streamline:align-front-1"
+          onclick="copyEmailHandler(this)"
         ></span>
       </IconButton>
     </div>
   </div>
 </section>
+
+<script type="module">
+  window.copyEmailHandler = (buttonElement) => {
+    copyEmail('efrainsicchasql@gmail.com', buttonElement);
+  };
+</script>
