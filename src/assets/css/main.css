@@ -40,6 +40,23 @@ html.dark {
   animation: 1s ease 0s 1 rising;
 }
 
+/* Color por defecto (gris) */
+#menu a {
+  color: rgb(124, 124, 124);
+  transition: color 0.3s ease-in-out;
+}
+
+/* Modo claro: Negro cuando se selecciona */
+.light-mode #menu a.active {
+  color: black;
+}
+
+/* Modo oscuro: Blanco cuando se selecciona */
+.dark-mode #menu a.active {
+  color: white;
+}
+
+
 @keyframes setting {
   0% {
     transform: translate3d(0, 10px, 0);
