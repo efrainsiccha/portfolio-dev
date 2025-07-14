@@ -31,9 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.body.classList.remove("dark-mode");
 	}
 
-	// Llamar a la función para actualizar los colores del menú
-	updateMenuColors();
-
 	stickyHeaderFuncionality();
 	applyMenuItemClasses();
 	evaluateHeaderPosition();
@@ -49,88 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
 				document.body.classList.add("light-mode");
 				document.body.classList.remove("dark-mode");
 			}
-			updateMenuColors(); // Aplicar colores al cambiar el modo
 		}, 100);
 	});
-
-	document.querySelectorAll("nav a").forEach((link) => {
-		link.addEventListener("click", (e) => {
-			const url = new URL(link.href);
-
-			if (url.pathname === window.location.pathname && url.hash) {
-				e.preventDefault();
-				const sectionId = url.hash.substring(1);
-				const targetSection = document.getElementById(sectionId);
-
-				if (targetSection) {
-					// Verificar si es móvil (ejemplo: menos de 768px de ancho)
-					const isMobile = window.innerWidth < 768;
-
-					// Definir offsets para escritorio y móvil
-					const offsetMapDesktop = {
-						inicio: -210,
-						proyectos: 70,
-						experiencia: -80,
-						"sobre-mi": -90,
-						contacto: -120,
-					};
-
-					const offsetMapMobile = {
-						inicio: -150,
-						proyectos: -80,
-						experiencia: -90,
-						"sobre-mi": -130,
-						contacto: -90,
-					};
-
-					const yOffset = isMobile
-						? offsetMapMobile[sectionId]
-						: offsetMapDesktop[sectionId];
-
-					const y =
-						targetSection.getBoundingClientRect().top +
-						window.scrollY +
-						yOffset;
-
-					window.scrollTo({ top: y, behavior: "smooth" });
-
-					document
-						.querySelectorAll("nav a")
-						.forEach((el) => el.classList.remove("active"));
-					link.classList.add("active");
-
-					// Actualizar la URL sin recargar la página
-					window.history.pushState({}, "", url.hash);
-				}
-			}
-		});
-	});
 });
-
-// Función para actualizar los colores del menú según el modo oscuro/claro
-function updateMenuColors() {
-	const isDarkMode = localStorage.getItem("dark_mode") === "true";
-	document.querySelectorAll("nav a").forEach((link) => {
-		link.classList.remove("dark-active", "light-active");
-
-		if (isDarkMode) {
-			link.classList.add("dark-active"); // Clase especial para modo oscuro
-		} else {
-			link.classList.add("light-active"); // Clase especial para modo claro
-		}
-	});
-}
-
-// window.toggleDarkMode = function(){
-//     document.documentElement.classList.toggle('dark');
-//     if(document.documentElement.classList.contains('dark')){
-//         localStorage.setItem('dark_mode', true);
-//         window.darkMode = true;
-//     } else {
-//         window.darkMode = false;
-//         localStorage.setItem('dark_mode', false);
-//     }
-// }
 
 window.stickyHeaderFuncionality = () => {
 	window.addEventListener("scroll", () => {

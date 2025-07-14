@@ -64,7 +64,7 @@ import Logo from "../components/logo.astro";
             return (
               <a
                 href={menu.url}
-                class="relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto hover:text-neutral-900 dark:hover:text-white"
+                class="relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto"
               >
                 {menu.name}
               </a>
@@ -114,3 +114,175 @@ import Logo from "../components/logo.astro";
     </nav>
   </div>
 </header>
+
+<script>
+  // Mapeo de URLs a IDs de sección
+  const sectionMap: Record<string, string> = {
+    '/portfolio-dev/': 'inicio',
+    '/portfolio-dev/proyectos': 'proyectos',
+    '/portfolio-dev/experiencia': 'experiencia',
+    '/portfolio-dev/sobre-mi': 'sobre-mi',
+    '/portfolio-dev/contacto': 'contacto'
+  };
+
+
+
+  // Función para scroll suave a sección
+  function smoothScrollToSection(sectionId: string): void {
+    let element = document.getElementById(sectionId);
+    
+    // Marcar que estamos haciendo scroll programático
+    isProgrammaticScroll = true;
+    
+    // Caso especial para "inicio" - ir al tope de la página
+    if (sectionId === 'inicio') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      // Resetear después del scroll
+      setTimeout(() => {
+        isProgrammaticScroll = false;
+      }, 1000);
+      return;
+    }
+    
+    if (element) {
+      const headerHeight = 80; // Altura del header
+      const extraOffset = 40; // Offset adicional para subir más
+      const elementPosition = element.offsetTop - headerHeight - extraOffset;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+      
+      // Resetear después del scroll
+      setTimeout(() => {
+        isProgrammaticScroll = false;
+      }, 1000);
+    }
+  }
+
+  // Variable para controlar si estamos haciendo scroll programático
+  let isProgrammaticScroll = false;
+
+  // Función para actualizar el enlace activo
+  function updateActiveLink(sectionId: string): void {
+    const menuLinks = document.querySelectorAll('nav a[href^="/portfolio-dev/"]');
+    
+    menuLinks.forEach((link: Element) => {
+      const href = (link as HTMLAnchorElement).getAttribute('href');
+      const linkSectionId = href ? sectionMap[href] : null;
+      
+      if (linkSectionId === sectionId) {
+        // Enlace activo - negro en light mode, blanco en dark mode
+        link.classList.add('!text-black', 'dark:!text-white');
+        link.classList.remove('text-neutral-500', 'dark:text-neutral-400');
+      } else {
+        // Enlace inactivo - gris
+        link.classList.remove('!text-black', 'dark:!text-white');
+        link.classList.add('text-neutral-500', 'dark:text-neutral-400');
+      }
+    });
+  }
+
+  // Función para detectar qué sección está visible
+  function getCurrentSection(): string {
+    // Si estamos en la página de proyectos, siempre retornar 'proyectos'
+    if (window.location.pathname === '/portfolio-dev/projects') {
+      return 'proyectos';
+    }
+    
+    const sections = ['inicio', 'proyectos', 'experiencia', 'sobre-mi', 'contacto'];
+    const scrollPosition = window.scrollY + 150; // Offset ajustado
+    
+    // Caso especial para "inicio" - si estamos cerca del tope
+    if (scrollPosition < 300) {
+      return 'inicio';
+    }
+    
+    // Buscar la sección actual basada en la posición del scroll
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section) {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        // Si el scroll está dentro de esta sección
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          return sections[i];
+        }
+      }
+    }
+    
+    return 'inicio';
+  }
+
+  // Función para manejar el scroll y actualizar navegación activa
+  function handleScroll(): void {
+    // No actualizar durante scroll programático
+    if (isProgrammaticScroll) {
+      return;
+    }
+    
+    const currentSection = getCurrentSection();
+    updateActiveLink(currentSection);
+  }
+
+  // Agregar event listeners a todos los enlaces del menú
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuLinks = document.querySelectorAll('nav a[href^="/portfolio-dev/"]');
+    
+    menuLinks.forEach((link: Element) => {
+      link.addEventListener('click', (e: Event) => {
+        e.preventDefault();
+        const href = (link as HTMLAnchorElement).getAttribute('href');
+        const sectionId = href ? sectionMap[href] : null;
+        
+        if (sectionId) {
+          // Si estamos en una página diferente a la principal, redirigir
+          if (window.location.pathname !== '/portfolio-dev/' && window.location.pathname !== '/') {
+            // Guardar la sección destino en sessionStorage
+            sessionStorage.setItem('scrollToSection', sectionId);
+            // Redirigir a la página principal
+            window.location.href = '/portfolio-dev/';
+            return;
+          }
+          
+          // Actualizar el enlace activo INMEDIATAMENTE
+          updateActiveLink(sectionId);
+          
+          // Pequeño delay para asegurar que las clases se apliquen
+          setTimeout(() => {
+            smoothScrollToSection(sectionId);
+          }, 10);
+        }
+      });
+    });
+
+    // Agregar listener para scroll
+    window.addEventListener('scroll', handleScroll);
+    
+    // Inicializar el estado activo
+    handleScroll();
+    
+    // Si estamos en la página de proyectos, marcar "Proyectos" como activo
+    if (window.location.pathname === '/portfolio-dev/projects') {
+      updateActiveLink('proyectos');
+    }
+    
+    // Verificar si hay una sección guardada en sessionStorage para hacer scroll
+    const savedSection = sessionStorage.getItem('scrollToSection');
+    if (savedSection) {
+      // Limpiar el sessionStorage
+      sessionStorage.removeItem('scrollToSection');
+      
+      // Hacer scroll a la sección guardada
+      setTimeout(() => {
+        smoothScrollToSection(savedSection);
+        updateActiveLink(savedSection);
+      }, 200);
+    }
+  });
+</script>
