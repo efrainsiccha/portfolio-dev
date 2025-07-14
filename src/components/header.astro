@@ -190,7 +190,7 @@ import Logo from "../components/logo.astro";
   // Función para detectar qué sección está visible
   function getCurrentSection(): string {
     // Si estamos en la página de proyectos, siempre retornar 'proyectos'
-    if (window.location.pathname === '/portfolio-dev/projects') {
+    if (window.location.pathname === '/portfolio-dev/proyectos') {
       return 'proyectos';
     }
     
@@ -268,7 +268,7 @@ import Logo from "../components/logo.astro";
     handleScroll();
     
     // Si estamos en la página de proyectos, marcar "Proyectos" como activo
-    if (window.location.pathname === '/portfolio-dev/projects') {
+    if (window.location.pathname === '/portfolio-dev/proyectos') {
       updateActiveLink('proyectos');
     }
     
