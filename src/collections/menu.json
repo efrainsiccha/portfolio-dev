@@ -1,7 +1,7 @@
 [
-  { "name": "Inicio", "url": "/portfolio-dev/#inicio" },
-  { "name": "Proyectos", "url": "/portfolio-dev/#proyectos" },
-  { "name": "Experiencia", "url": "/portfolio-dev/#experiencia" },
-  { "name": "Sobre Mi", "url": "/portfolio-dev/#sobre-mi" },
-  { "name": "Contacto", "url": "/portfolio-dev/#contacto" }
+	{ "name": "Inicio", "url": "/portfolio-dev/#inicio" },
+	{ "name": "Proyectos", "url": "/portfolio-dev/#proyectos" },
+	{ "name": "Experiencia", "url": "/portfolio-dev/#experiencia" },
+	{ "name": "Sobre Mi", "url": "/portfolio-dev/#sobre-mi" },
+	{ "name": "Contacto", "url": "/portfolio-dev/#contacto" }
 ]

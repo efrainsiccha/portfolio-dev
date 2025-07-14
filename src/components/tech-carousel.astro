@@ -1,0 +1,102 @@
+---
+import Icons from "./icons/icons.astro";
+
+// Lista de tecnologías con sus iconos
+const technologies = [
+	"java",
+	"springboot",
+	"csharp",
+	"netcore",
+	"javascript",
+	"html",
+	"css",
+	"tailwind",
+	"bootstrap",
+	"react",
+	"astro",
+	"node",
+	"express",
+	"mysql",
+	"mongodb",
+	"github",
+	"git",
+	"postman",
+];
+---
+
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-7 lg:px-0">
+    <div class="relative overflow-hidden mx-auto" style="max-width: 900px;">
+      <!-- Carrusel Container -->
+      <div class="relative overflow-hidden">
+        <!-- Carrusel Track -->
+        <div 
+          id="tech-carousel"
+          class="flex animate-scroll"
+          style={`width: calc(120px * ${technologies.length * 2});`}
+        >
+          <!-- Primera copia de iconos -->
+          {technologies.map((tech) => (
+            <div class="tech-icon flex items-center justify-center w-24 h-24 mx-3 transition-all duration-300 hover:scale-110 cursor-pointer">
+              <Icons name={tech} class="w-12 h-12 transition-all duration-300 hover:drop-shadow-lg" />
+            </div>
+          ))}
+          
+          <!-- Segunda copia para el efecto infinito -->
+          {technologies.map((tech) => (
+            <div class="tech-icon flex items-center justify-center w-24 h-24 mx-3 transition-all duration-300 hover:scale-110 cursor-pointer">
+              <Icons name={tech} class="w-12 h-12 transition-all duration-300 hover:drop-shadow-lg" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-120px * 18));
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .animate-scroll.paused {
+    animation-play-state: paused;
+  }
+</style>
+
+<script>
+  // Funcionalidad para pausar el carrusel con hover
+  const carousel = document.getElementById('tech-carousel');
+  const techIcons = document.querySelectorAll('.tech-icon');
+
+  if (carousel) {
+    // Pausar cuando el mouse entra en cualquier icono
+    techIcons.forEach(icon => {
+      icon.addEventListener('mouseenter', () => {
+        carousel.classList.add('paused');
+      });
+      
+      icon.addEventListener('mouseleave', () => {
+        carousel.classList.remove('paused');
+      });
+    });
+
+    // Pausar cuando el mouse entra en el contenedor del carrusel
+    carousel.addEventListener('mouseenter', () => {
+      carousel.classList.add('paused');
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+      carousel.classList.remove('paused');
+    });
+  }
+</script> 

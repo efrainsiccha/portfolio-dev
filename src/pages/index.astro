@@ -1,11 +1,12 @@
 ---
 import Button from "../components/button.astro";
-import Projects from "../components/home/projects.astro";
-import Separator from "../components/home/separator.astro";
-import Experience from "../components/home/experience.astro";
-import Layout from "../layouts/main.astro";
 import About from "../components/home/about.astro";
 import ContactMe from "../components/home/contact-me.astro";
+import Experience from "../components/home/experience.astro";
+import Projects from "../components/home/projects.astro";
+import Separator from "../components/home/separator.astro";
+import Layout from "../layouts/main.astro";
+import TechCarousel from "../components/tech-carousel.astro";
 ---
 
 <Layout title="efraDev">
@@ -94,6 +95,8 @@ import ContactMe from "../components/home/contact-me.astro";
       </div>
     </div>
   </section>
+
+  <TechCarousel />
 
   <!-- Proyectos -->
   <Separator text="Mira mis proyectos" id="proyectos" />
