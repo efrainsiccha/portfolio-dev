@@ -9,11 +9,6 @@ import AboutExperience from "../../components/about-experience.astro";
   >
     Mi Experiencia
   </h2>
-  <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
-    A lo largo de mi carrera, he trabajado en diversas empresas, contribuyendo
-    en proyectos de desarrollo y tecnología. Aquí están algunas de mis
-    experiencias laborales.
-  </p>
 
   <div class="w-full max-w-4xl mx-auto my-7 xl:px-0">
     <div class="px-5 py-5">
@@ -27,6 +22,7 @@ import AboutExperience from "../../components/about-experience.astro";
                 company={experience.company}
                 description={experience.description}
                 logo={experience.logo}
+                type={experience.type}
               />
             </div>
           );
