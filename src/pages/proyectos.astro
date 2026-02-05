@@ -21,7 +21,10 @@ import Layout from "../layouts/main.astro";
             <Project
               name={project.name}
               description={project.description}
-              url={project.url}
+              url={(project as any).url}
+              image={project.image}
+              tags={project.tags}
+              details={project.details}
             />
           )
         })

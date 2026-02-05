@@ -1,32 +1,15 @@
 [
 	{
-		"name": "TempMail.Best",
-		"description": "Best Temporary Email.",
-		"url": "https://tempmail.best"
-	},
-	{
-		"name": "DNS.Surf",
-		"description": "Querying DNS Resolution Results in Different Regions Worldwide.",
-		"url": "https://dns.surf"
-	},
-	{
-		"name": "HTML.ZONE",
-		"description": "Web Toolbox.",
-		"url": "https://html.zone"
-	},
-	{
-		"name": "Sink",
-		"description": "A Simple / Speedy / Secure Link Shortener with Analytics.",
-		"url": "https://sink.cool"
-	},
-	{
-		"name": "BroadcastChannel",
-		"description": "Turn your Telegram Channel into a MicroBlog.",
-		"url": "https://github.com/ccbikai/BroadcastChannel"
-	},
-	{
-		"name": "L(O*62).ONG",
-		"description": "Make your URL looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooonger",
-		"url": "https://loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.ong"
+		"name": "CrumbLove",
+		"description": "Sistema de Gestión de Repostería",
+		"image": "/portfolio-dev/assets/images/projects/crumblove.png",
+		"tags": [
+			"Laravel",
+			"FilamentPHP",
+			"Postgresql",
+			"Render",
+			"Supabase"
+		],
+		"details": "Sistema integral de gestión para reposterías que permite administrar inventarios, ventas, producción y gastos de manera eficiente. <br><br><strong>Resoluciones:</strong><br><ul><li>Gestión de recetas y costos de producción.</li><li>Control de inventario en tiempo real.</li><li>Reportes de ventas y ganancias.</li><li>Interfaz optimizada para dispositivos móviles y tabletas.</li></ul>"
 	}
 ]

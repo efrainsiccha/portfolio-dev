@@ -1,16 +1,14 @@
 [
 	{
-		"dates": "Abril 2025 · Present",
+		"dates": "Abril 2025 · Septiembre 2025",
 		"role": "Practicante Ingenieria de Sistemas Computacionales",
-		"type": "full-time",
 		"company": "Atenea Programas de Intercambio",
 		"description": "Participé en el análisis y diagnóstico de problemas dentro del sistema interno (intranet) de la empresa. Propuse y apliqué mejoras en funcionalidades que optimizaron procesos operativos y administrativos en diversas áreas. Colaboré con el equipo para adaptar el sistema a las necesidades actuales del negocio, enfocándome en la usabilidad y eficiencia. Desarrollé soluciones utilizando PHP e implementé APIs para mejorar la integración del sistema. Aporté en la documentación de cambios y pruebas funcionales para asegurar la estabilidad del sistema.",
 		"logo": "/portfolio-dev/assets/images/experiences/logo-atenea.jpg"
 	},
 	{
-		"dates": "Noviembre 2022 · Enero 2023",
+		"dates": "Noviembre 2022 · Junio 2023",
 		"role": "Programador Java Junior",
-		"type": "freelancer",
 		"company": "Thradex Telecom",
 		"description": "Desarrollé un sistema de extracción y almacenamiento de datos JSON para telecomunicaciones. El proyecto consistió en crear una aplicación Java que lee archivos JSON, los mapea a objetos Java (POJOs) usando librerías como Jackson/Gson, y almacena los datos en una base de datos MySQL. Implementé una interfaz gráfica con Swing para la selección de archivos y desarrollé el proceso completo de carga iterativa y controlada de datos al esquema de base de datos db_telecom.",
 		"logo": "/portfolio-dev/assets/images/experiences/logo-thradex.ico"
